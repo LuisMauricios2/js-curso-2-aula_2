@@ -6,8 +6,14 @@ function exibirTextoNaTela(tag, texto) {
     campo.innerHTML = texto;
 }
 
-exibirTextoNaTela('h1', 'Jogo do número secreto');
-exibirTextoNaTela('p', 'Escolha um número entre 1 e 10');
+function exibirMensagemInicial() { 
+    exibirTextoNaTela('h1', 'Jogo do número secreto'); 
+    exibirTextoNaTela('p', 'Escolha um número entre 1 e 10'); I
+}
+
+exibirMensagemInicial()
+
+
 
 function verificarChute() {
     let chute = document.querySelector('input').value;
@@ -17,6 +23,8 @@ function verificarChute() {
         let palavraTentativas = tentativas > 1 ? 'tentativas':'tentativa';
         let mensagemTentativas = `Você descobriu o numero secreto com ${tentativas} ${palavraTentativas}`;
         exibirTextoNaTela('p', mensagemTentativas);
+        //abaixo comando para selecionar elemento pelo Id e comando para remover atributo.
+        document.getElementById('reiniciar').removeAttribute('disabled');
     } else {
         if (chute > numeroSecreto) {
             exibirTextoNaTela('p', `O numero secreto é menor que ${chute}`);
@@ -35,6 +43,17 @@ function gerarNumeroAleatorio() {
 function limparCampo () {
     chute = document.querySelector('input');
     chute.value = '';
+}
+
+// função abaixo criada para reniciar jogo ao click do botão
+
+function reiniciarJogo() {
+    numeroSecreto = gerarNumeroAleatorio();
+    limparCampo();
+    tentativas =1;
+    exibirMensagemInicial();
+    //comando abaixo usado para selecionar botão reiniar no html e sempre desabilita-lo após reiniciar
+    document.getElementById('reiniciar').setAttribute('disabled', true)
 }
 
 
