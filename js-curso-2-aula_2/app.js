@@ -31,7 +31,7 @@ function verificarChute() {
 function gerarNumeroAleatorio() {
     return parseInt(Math.random() * 10 + 1);
 }
-
+// função transforma o valor do chute em str vazia novamente
 function limparCampo () {
     chute = document.querySelector('input');
     chute.value = '';
